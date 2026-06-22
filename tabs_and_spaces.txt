@@ -1,0 +1,5 @@
+3 tabs:			\
+3 spaces:   \
+1 backspace: 123\
+deleting backspace (wc): 1 2
+

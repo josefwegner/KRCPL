@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+/* Exercise 1-5. Print Fahrenheit-Celsius table in reverse */
+
+int main()
+{
+    int fahr;
+
+    for (fahr = 300; fahr >= 0; fahr = fahr - 20)
+        printf("%3d %5.1f\n", fahr, (5.0/9.0) * (fahr - 32));
+}
