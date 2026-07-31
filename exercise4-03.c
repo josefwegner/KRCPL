@@ -37,7 +37,7 @@ main()
                 push(pop() / op2);
             else
                 printf("error: zero divisor\n");
-						break;
+            break;
         case '%':
             op2 = pop();
             op1 = pop();
@@ -48,7 +48,7 @@ main()
                     printf("error: modulo requires integer operands\n");
             else
                 printf("error: zero divisior for %%\n");
-						break;
+            break;
         case '\n':
             printf("\t%.8g\n", pop());
             break;

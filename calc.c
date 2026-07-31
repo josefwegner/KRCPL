@@ -37,7 +37,7 @@ main()
                 push(pop() / op2);
             else
                 printf("error: zero divisor\n");
-						break;
+            break;
         case '\n':
             printf("\t%.8g\n", pop());
             break;
