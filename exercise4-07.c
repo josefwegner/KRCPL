@@ -147,6 +147,7 @@ void clear(void)
 
 int getch(void);
 void ungetch(int);
+void ungets(const char s[]);
 
 /* getop:  get next operator or numeric operand */
 int getop(char s[])
@@ -202,3 +203,24 @@ void ungetch(int c) /* push character back on input */
     else
         buf[bufp++] = c;
 }
+
+void ungets(const char s[])
+{
+    int i, len = 0;
+
+    if (s == NULL) {
+        printf("ungets: cannot unget null string\n");
+        return;
+    }
+
+    while (s[len]) len++; /* get size of string */
+
+    if (len + bufp > BUFSIZE) {
+        printf("ungets: too many characters\n");
+        return;
+    }
+
+    for (i = len - 1; i >= 0; --i)
+        buf[bufp++] = s[i];
+}
+
