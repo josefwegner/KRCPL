@@ -185,8 +185,8 @@ int getop(char s[])
     return NUMBER;
 }
 
-char buf;           /* buffer for ungetch */
-int  buf_full = 0;  /* flag if buffer is filled */
+int buf;            /* buffer for ungetch that also can hold an EOF */
+int buf_full = 0;   /* flag if buffer is filled */
 
 int getch(void)     /* get a (possibly pushed back) character */
 {
