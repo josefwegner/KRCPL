@@ -2,7 +2,7 @@
 
 #define MAXLINE 1000 /* maximum input line size */
 
-int mygetline(char line[], int limit);
+int kr_getline(char line[], int limit);
 int trimline(char line[]);
 int trimline2(char line[], int length);
 
@@ -12,15 +12,15 @@ int main()
     int len;    /* current line length */
     char line[MAXLINE]; /* current input line */
 
-    while ((len = mygetline(line, MAXLINE)) > 0)
+    while ((len = kr_getline(line, MAXLINE)) > 0)
         if ((len = trimline2(line, len)) > 0)
             printf("%s", line);
 
     return 0;
 }
 
-/* mygetline: read a line into s, return length */
-int mygetline(char s[], int lim)
+/* kr_getline: read a line into s, return length */
+int kr_getline(char s[], int lim)
 {
     int c, i;
 

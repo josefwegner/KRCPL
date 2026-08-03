@@ -3,7 +3,7 @@
 #define MAXLINE 1000 /* maximum input line size */
 #define PRINT_LEN 80 /* print lines longer than this value */
 
-int mygetline(char line[], int maxline);
+int kr_getline(char line[], int maxline);
 
 /* Exercise 1-17. Print lines longer than 80 characters */
 int main()
@@ -11,15 +11,15 @@ int main()
     int len;    /* current line length */
     char line[MAXLINE]; /* current input line */
 
-    while ((len = mygetline(line, MAXLINE)) > 0)
+    while ((len = kr_getline(line, MAXLINE)) > 0)
         if (len > PRINT_LEN)
             printf("%s", line);
 
     return 0;
 }
 
-/* mygetline: read a line into s, return length */
-int mygetline(char s[], int lim)
+/* kr_getline: read a line into s, return length */
+int kr_getline(char s[], int lim)
 {
     int c, i, n;
 

@@ -6,7 +6,7 @@
 #define ESCAPE 0
 #define UNESCAPE 1
 
-int mygetline(char line[], int limit);
+int kr_getline(char line[], int limit);
 int escape(char source[], char target[], int tlen);
 int unescape(char source[], char target[], int tlen);
 
@@ -19,7 +19,7 @@ int main(int argc, char **argv)
     if (argc > 1 && argv[1][0] == '-' && argv[1][1] == 'u')
         operation = UNESCAPE;
 
-    while ((len = mygetline(line, MAXLINE)) > 0) {
+    while ((len = kr_getline(line, MAXLINE)) > 0) {
         if (operation == ESCAPE)
             escape(line, buffer, MAXLINE);
         else
@@ -30,8 +30,8 @@ int main(int argc, char **argv)
     return 0;
 }
 
-/* mygetline: read a line into s, return length */
-int mygetline(char s[], int lim)
+/* kr_getline: read a line into s, return length */
+int kr_getline(char s[], int lim)
 {
     int c, i;
 

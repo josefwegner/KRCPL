@@ -6,7 +6,7 @@ int max;                /* maximum length seen so far */
 char line[MAXLINE];     /* current input line */
 char longest[MAXLINE];  /* longest line saved here */
 
-int mygetline(void);
+int kr_getline(void);
 void copy(void);
 
 /* print longest input line; specialized version */
@@ -19,7 +19,7 @@ int main()
     */
 
     max = 0;
-    while ((len = mygetline()) > 0)
+    while ((len = kr_getline()) > 0)
         if (len > max) {
             max = len;
             copy();
@@ -29,8 +29,8 @@ int main()
     return 0;
 }
 
-/* mygetline: specialized version */
-int mygetline(void)
+/* kr_getline: specialized version */
+int kr_getline(void)
 {
     int c, i;
     /*

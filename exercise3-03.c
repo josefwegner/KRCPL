@@ -4,7 +4,7 @@
 /* Exercise 3-3. Write the function expand(s1,s2). */
 
 #define MAXLINE 1000 /* maximum input line size */
-int mygetline(char line[], int limit);
+int kr_getline(char line[], int limit);
 int expand(char source[], char target[], int maxlen);
 
 int main(int argc, char **argv)
@@ -12,7 +12,7 @@ int main(int argc, char **argv)
     int len;
     char line[MAXLINE], buffer[MAXLINE];
 
-    while ((len = mygetline(line, MAXLINE)) > 0) {
+    while ((len = kr_getline(line, MAXLINE)) > 0) {
         expand(line, buffer, MAXLINE);
         printf("%s", buffer);
     }
@@ -20,8 +20,8 @@ int main(int argc, char **argv)
     return 0;
 }
 
-/* mygetline: read a line into s, return length */
-int mygetline(char s[], int lim)
+/* kr_getline: read a line into s, return length */
+int kr_getline(char s[], int lim)
 {
     int c, i;
 

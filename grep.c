@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define MAXLINE 1000    /* maximum input line length */
 
-int mygetline(char line[], int max);
+int kr_getline(char line[], int max);
 int strindex(char source[], char searchfor[]);
 
 char pattern[] = "ould";  /* pattern to search for */
@@ -12,7 +12,7 @@ int main()
   char line[MAXLINE];
   int found = 0;
 
-  while (mygetline(line, MAXLINE) > 0 )
+  while (kr_getline(line, MAXLINE) > 0 )
     if (strindex(line, pattern) >= 0) {
       printf("%s", line);
       found++;
@@ -21,8 +21,8 @@ int main()
   return found;
 }
 
-/* mygetline: get line into s, return length */
-int mygetline(char s[], int lim)
+/* kr_getline: get line into s, return length */
+int kr_getline(char s[], int lim)
 {
   int c, i;
 

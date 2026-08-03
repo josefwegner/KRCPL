@@ -2,7 +2,7 @@
 
 #define MAXLINE 1000 /* maximum input line size */
 
-int mygetline(char line[], int limit);
+int kr_getline(char line[], int limit);
 void reverse(char line[], int length);
 
 /* Exercise 1-19. Reverse the program's input line by line. */
@@ -11,7 +11,7 @@ int main()
     int len;    /* current line length */
     char line[MAXLINE]; /* current input line */
 
-    while ((len = mygetline(line, MAXLINE)) > 0) {
+    while ((len = kr_getline(line, MAXLINE)) > 0) {
         reverse(line, len);
         printf("%s", line);
     }
@@ -19,8 +19,8 @@ int main()
     return 0;
 }
 
-/* mygetline: read a line into s, return length */
-int mygetline(char s[], int lim)
+/* kr_getline: read a line into s, return length */
+int kr_getline(char s[], int lim)
 {
     int c, i;
 
