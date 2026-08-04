@@ -1,5 +1,5 @@
 CC ?= gcc
-CFLAGS ?= -Wall -g -mcrt=clib4
+CFLAGS ?= -Wall -g -D_ISOC99_SOURCE
 LDFLAGS ?= -lm
 #CC=vc
 #CFLAGS=+aosppc -lm
