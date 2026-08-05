@@ -145,16 +145,19 @@ void clear(void)
 
 #include <ctype.h>
 
-int getch(void);
-void ungetch(int);
-
 /* getop:  get next operator or numeric operand */
 int getop(char s[])
 {
     int i, c;
+    static int buf = EOF;
 
-    while ((s[0] = c = getch()) == ' ' || c == '\t')
-        ;
+    c = buf != EOF ? buf : getchar();
+    buf = EOF;
+
+    while (c == ' ' || c == '\t')
+        c = getchar();
+
+    s[0] = c;
     s[1] = '\0';
     if (!isdigit(c) && c != '.' && c != '-') {
         if (c >= 'a' && c <= 'z')
@@ -164,45 +167,21 @@ int getop(char s[])
     }
     i = 0;
     if (c == '-') {
-        c = getch(); /* look at the next char */
-        if (!isdigit(c) && c != '.') {
-            ungetch(c);
-            return '-'; /* the operator - */
-        }
-        else {
-            s[++i] = c;
-        }
+        buf = getchar();     /* look at the next char */
+        if (!isdigit(buf) && buf != '.')
+            return c;        /* the operator - */
+        else
+            s[++i] = c = buf;
     }
-    if (isdigit(c))   /* collect integer part */
-        while (isdigit(s[++i] = c = getch()))
+    if (isdigit(c))          /* collect integer part */
+        while (isdigit(s[++i] = c = getchar()))
             ;
-    if (c == '.')     /* collect fraction part */
-        while (isdigit(s[++i] = c = getch()))
+    if (c == '.')            /* collect fraction part */
+        while (isdigit(s[++i] = c = getchar()))
             ;
     s[i] = '\0';
     if (c != EOF)
-        ungetch(c);
-    return NUMBER;
-}
-
-int buf;            /* buffer for ungetch that also can hold an EOF */
-int buf_full = 0;   /* flag if buffer is filled */
-
-int getch(void)     /* get a (possibly pushed back) character */
-{
-    if (buf_full) {
-        buf_full = 0;
-        return buf;
-    } else
-        return getchar();
-}
-
-void ungetch(int c) /* push character back on input */
-{
-    if (buf_full)
-        printf("ungetch: too many characters\n");
-    else {
         buf = c;
-        buf_full = 1;
-    }
+
+    return NUMBER;
 }
