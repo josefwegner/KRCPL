@@ -33,7 +33,12 @@ int getint(int *pn)
     }
     sign = (c == '-') ? -1 : 1;
     if (c == '+' || c == '-')
-        c = getch();
+        if (!isdigit(c = getch())) {
+            if (c != EOF)
+              ungetch(c);
+            *pn = 0;
+            return sign == -1 ? '-' : '+';
+        }
     for (*pn = 0; isdigit(c); c = getch())
         *pn = 10 * *pn + (c - '0');
     *pn *= sign;
