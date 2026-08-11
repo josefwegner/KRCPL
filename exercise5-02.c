@@ -2,46 +2,53 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#define SIZE 5
+#define SIZE 10
 
 int getch(void);
 void ungetch(int);
-int getint(int *);
+int getfloat(float *);
 
 int main(void) {
-  int i, n, array[SIZE];
+  int i, n;
+  float array[SIZE];
 
-  for (n = 0; n < SIZE && getint(&array[n]) != EOF; n++)
+  for (n = 0; n < SIZE && getfloat(&array[n]) != EOF; n++)
        ;
 
   for (i = 0; i < n; i++)
-       printf("%d: %d\n", i, array[i]);
+       printf("%d: %f\n", i, array[i]);
 
   return EXIT_SUCCESS;
 }
 
-/* getint:  get next integer from input into *pn */
-int getint(int *pn)
+/* getfloat:  get next float from input into *pf */
+int getfloat(float *pf)
 {
   int c, sign;
+  float pow;
 
   while (isspace(c = getch()))   /* skip white space */
         ;
-    if (!isdigit(c) && c != EOF && c != '+' && c != '-') {
+    if (!isdigit(c) && c != EOF && c != '+' && c != '-' && c != '.') {
         ungetch(c);    /* it's not a number */
         return 0;
     }
     sign = (c == '-') ? -1 : 1;
     if (c == '+' || c == '-')
-        if (!isdigit(c = getch())) {
+        if (!isdigit(c = getch()) && c != '.') {
             if (c != EOF)
               ungetch(c);
-            *pn = 0;
+            *pf = 0.0;
             return sign == -1 ? '-' : '+';
         }
-    for (*pn = 0; isdigit(c); c = getch())
-        *pn = 10 * *pn + (c - '0');
-    *pn *= sign;
+    for (*pf = 0; isdigit(c); c = getch())
+        *pf = 10 * *pf + (c - '0');
+    if (c == '.') {
+        c = getch();
+        for (pow = 10.0; isdigit(c); c = getch(), pow = pow * 10.0)
+            *pf = *pf + (c - '0') / pow;
+    }
+    *pf *= sign;
     if (c != EOF)
         ungetch(c);
     return c;
