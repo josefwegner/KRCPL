@@ -5,7 +5,7 @@ Purpose
 - Contents are standalone C programs and small tools, focused on chapters 1–4.
 
 Quick commands
-- Build everything: `make` (this repo uses a lowercase `makefile`).
+- Build everything: `make`
 - Build a single program: `make build/<program>` e.g. `make build/exercise4-01`.
 - Run a program: `./build/<program>` e.g. `./build/hello`.
 - Clean build artifacts: `make clean`.
