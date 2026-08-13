@@ -12,9 +12,12 @@ int main(void)
     printf("strend(\"%s\", \"%s\") = %d\n", s, w, strend(s, w));
     printf("strend(\"%s\", \"%s\") = %d\n", s, x, strend(s, x));
     printf("strend(\"%s\", \"%s\") = %d\n", s, y, strend(s, y));
+    printf("strend(\"%s\", \"%s\") = %d\n", t, s, strend(t, s));
     printf("strend(\"%s\", \"%s\") = %d\n", s, z, strend(s, z));
+    printf("strend(\"%s\", \"%s\") = %d\n", z, s, strend(z, s));
+    printf("strend(\"%s\", \"%s\") = %d\n", z, z, strend(z, z));
 
-	return EXIT_SUCCESS;
+    return EXIT_SUCCESS;
 }
 
 int strend(char *s, char *t) {
