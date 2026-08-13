@@ -32,7 +32,7 @@ int strend(char *s, char *t) {
         tp++;
 
     while(sp > s && tp > t && *--sp == *--tp)
-    	;      // decrement pointer before reading, moves the pointer
+        ;      // decrement pointer before reading, moves the pointer
                // to last char and then start comparing
 
 return (tp == t && (*tp == '\0' || *sp == *tp));
