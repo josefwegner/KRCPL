@@ -2,10 +2,10 @@
 #include <string.h>
 
 void reverse(char s[]);
-void myitoa(int n, char s[]);
+void kr_itoa(int n, char s[]);
 
-/* myitoa: convert n to charactes in s */
-void myitoa(int n, char s[])
+/* kr_itoa: convert n to charactes in s */
+void kr_itoa(int n, char s[])
 {
    int i, sign;
 
@@ -38,7 +38,7 @@ void reverse(char s[])
 int main(void)
 {
    char s[10];
-   myitoa(123456, s);
+   kr_itoa(123456, s);
    printf("%s\n", s);
 
    return 0;

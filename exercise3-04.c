@@ -10,10 +10,10 @@
    The biggest positive (signed) number would be 2^31-1 */
 
 void reverse(char s[]);
-void myitoa(int n, char s[]);
+void kr_itoa(int n, char s[]);
 
-/* myitoa: convert n to charactes in s */
-void myitoa(int n, char s[])
+/* kr_itoa: convert n to charactes in s */
+void kr_itoa(int n, char s[])
 {
    int i, sign;
 
@@ -45,9 +45,9 @@ void reverse(char s[])
 int main(void)
 {
    char s[10];
-   myitoa(INT_MIN, s);
+   kr_itoa(INT_MIN, s);
    printf("%s\n", s);
-   myitoa(INT_MAX, s);
+   kr_itoa(INT_MAX, s);
    printf("%s\n", s);
 
    return 0;

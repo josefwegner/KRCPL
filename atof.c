@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <ctype.h>
 
-double my_atof(const char s[]);
+double kr_atof(const char s[]);
 
 int main(void)
 {
   char s[] = "0.1";
 
-  printf("atof(\"%s\") = %lf\n", s, my_atof(s));
+  printf("atof(\"%s\") = %lf\n", s, kr_atof(s));
 
   return 0;
 }
 
-double my_atof(const char s[]) {
+double kr_atof(const char s[]) {
   double val, power;
   int i, sign;
 

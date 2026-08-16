@@ -2,23 +2,23 @@
 #include <stdlib.h>
 #include <string.h>
 
-void myitoa(int, char []);
+void kr_itoa(int, char []);
 
 int main(void)
 {
    char s[10];
 
-   myitoa(-1230, s);
+   kr_itoa(-1230, s);
    printf("Result: %s\n", s);
 
    return EXIT_SUCCESS;
 }
 
-/* myitoa: recursively convert n to charactes in s */
-void myitoa(int n, char s[])
+/* kr_itoa: recursively convert n to charactes in s */
+void kr_itoa(int n, char s[])
 {
    int sign;
-   void myitoaloop(int, int, char [], int);
+   void kr_itoaloop(int, int, char [], int);
 
    if (n == 0) {           /* special handling for 0 */
       s[0] = '0';
@@ -29,15 +29,15 @@ void myitoa(int n, char s[])
    if ((sign = n) < 0)        /* record sign */
       n = -n;                 /* make n positive */
 
-   myitoaloop(n, 0, s, sign);
+   kr_itoaloop(n, 0, s, sign);
 }
 
-void myitoaloop(int n, int i, char s[], int sign) {
+void kr_itoaloop(int n, int i, char s[], int sign) {
    void reverse(char []);
 
    if (n > 0) {
       s[i++] = n % 10 + '0';  /* get next digit */
-      myitoaloop(n / 10, i, s, sign);
+      kr_itoaloop(n / 10, i, s, sign);
    } else {
       if (sign < 0)
          s[i++] = '-';

@@ -3,7 +3,7 @@
 
 /* Exercise 4-2. Expand atof to support scientific notation. */
 
-double my_atof(const char s[]);
+double kr_atof(const char s[]);
 void test_atof(const char s[]);
 
 int main(void)
@@ -16,10 +16,10 @@ int main(void)
 }
 
 void test_atof(const char s[]) {
-  printf("atof(\"%s\") = %lf\n", s, my_atof(s));
+  printf("atof(\"%s\") = %lf\n", s, kr_atof(s));
 }
 
-double my_atof(const char s[]) {
+double kr_atof(const char s[]) {
   double val, power;
   int i, sign, e, e_sign;
 

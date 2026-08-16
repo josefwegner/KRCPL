@@ -7,10 +7,10 @@
    The third argument is a minimum field length. */
 
 void reverse(char s[]);
-void myitoa(int n, char s[], unsigned int l);
+void kr_itoa(int n, char s[], unsigned int l);
 
-/* myitoa: convert n to charactes in s */
-void myitoa(int n, char s[], unsigned int l)
+/* kr_itoa: convert n to charactes in s */
+void kr_itoa(int n, char s[], unsigned int l)
 {
    int i, sign;
 
@@ -44,11 +44,11 @@ void reverse(char s[])
 int main(void)
 {
    char s[32];
-   myitoa(INT_MIN, s, 10);
+   kr_itoa(INT_MIN, s, 10);
    printf("%s\n", s);
-   myitoa(INT_MAX, s, 20);
+   kr_itoa(INT_MAX, s, 20);
    printf("%s\n", s);
-   myitoa(-1, s, 5);
+   kr_itoa(-1, s, 5);
    printf("%s\n", s);
 
 
