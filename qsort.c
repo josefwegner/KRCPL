@@ -18,7 +18,7 @@ int main(void)
         printf("%d ", array[i]);
     printf("\n");
 
-    return EXIT_SUCCESS; 
+    return EXIT_SUCCESS;
 }
 /* kr_qsort:  sort v[left]...v[right] into increasing order */
 void kr_qsort(int v[], int left, int right)

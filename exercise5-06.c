@@ -73,9 +73,9 @@ void reverse(char *s)
 
     if (len == 0)
         return;
-    
+
     ps = ps + len - 1;
-    
+
     while (s < ps) {
         c = *s;
         *s++ = *ps;

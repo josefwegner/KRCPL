@@ -22,7 +22,7 @@ int main(void)
 void reverse(char s[])
 {
    void reverse_rec(char [], int, int);
-   
+
    reverse_rec(s, 0, strlen(s) - 1);
 }
 

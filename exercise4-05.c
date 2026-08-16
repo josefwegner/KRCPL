@@ -71,7 +71,7 @@ main()
             clear();
             break;
         case 'S':
-            push(sin(pop())); 
+            push(sin(pop()));
             break;
         case 'E':
             push(exp(pop()));

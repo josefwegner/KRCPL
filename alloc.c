@@ -14,7 +14,7 @@ int main(void)
     }
     else
         printf("Not enough room\n");
-    
+
     if ((cp = alloc(10000 + 1))) {
         printf("Allocated %d chars\n", 10000 + 1);
         afree(cp);

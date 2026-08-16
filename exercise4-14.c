@@ -9,6 +9,6 @@ int main(void) {
 
   swap(int, a[i++], a[j++]);    /* safe: &(b[i++]) evaluated once each */
   printf("ptr:  i=%d j=%d a[0]=%d a[1]=%d\n", i, j, a[0], a[1]);
-  
+
   return EXIT_SUCCESS;
 }
