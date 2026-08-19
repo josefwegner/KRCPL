@@ -2,10 +2,11 @@
 #include <string.h>
 
 #define MAXLINES 5000       /* max #lines to be sorted */
+#define ALLOCSIZE 10000     /* size of available space */
 
 char *lineptr[MAXLINES];    /* pointers to text lines */
 
-int readlines(char *lineptr[], int nlines);
+int readlines(char *lineptr[], int nlines, char *storage);
 void writelines(char *lineptr[], int nlines);
 void kr_qsort(char *lineptr[], int left, int right);
  
@@ -13,8 +14,9 @@ void kr_qsort(char *lineptr[], int left, int right);
 int main(void)
 {
     int nlines;     /* number of input lines read */
+    char storage[ALLOCSIZE];
 
-    if ((nlines = readlines(lineptr, MAXLINES)) >= 0) {
+    if ((nlines = readlines(lineptr, MAXLINES, storage)) >= 0) {
         kr_qsort(lineptr, 0, nlines-1);
         writelines(lineptr, nlines);
         return 0;
@@ -26,23 +28,27 @@ int main(void)
 
 #define MAXLEN 1000    /* max length of any input line */
 int kr_getline(char *,  int);
-char *alloc(int);
 
 /* readlines:  read input lines */
-int readlines(char *lineptr[], int maxlines)
+int readlines(char *lineptr[], int maxlines, char *storage)
 {
-    int len, nlines;
-    char *p, line[MAXLEN];
+    int  len, nlines;
+    char *p = storage, line[MAXLEN];
 
     nlines = 0;
-    while ((len = kr_getline(line, MAXLEN)) > 0)
-        if (nlines >= maxlines || (p = alloc(len)) == NULL)
+    while ((len = kr_getline(line, MAXLEN)) > 0) {
+        if (line[len-1] == '\n') {
+            len--;
+            line[len] = '\0'; /* delete newline and correct len */
+        }
+        if (nlines >= maxlines || (p - storage) + len >= ALLOCSIZE)
             return -1;
         else {
-            line[len-1] = '\0'; /* delete newline */
             strcpy(p, line);
             lineptr[nlines++] = p;
+            p += len + 1;
         }
+    }
     return nlines;
 }
 
@@ -53,26 +59,6 @@ void writelines(char *lineptr[], int nlines)
 
     for (i = 0; i < nlines; i++)
         printf("%s\n", lineptr[i]);
-}
-
-#define ALLOCSIZE 10000 /* size of available space */
-
-static char allocbuf[ALLOCSIZE];  /* storage for alloc */
-static char *allocp = allocbuf;   /* next free position */
-
-char *alloc(int n)  /* return pointer to n characters */
-{
-    if (allocbuf + ALLOCSIZE - allocp >= n) { /* it fits */
-        allocp += n;
-        return allocp - n; /* old p */
-    } else      /* not enough room */
-        return 0;
-}
-
-void afree(char *p)  /* free storage pointed to by p */
-{
-    if (p >= allocbuf && p < allocbuf + ALLOCSIZE)
-        allocp = p;
 }
 
 /* kr_getline: get line into s, return length */
